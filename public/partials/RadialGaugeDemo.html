@@ -1,0 +1,35 @@
+	
+<div class="container">
+<h2>Detetor de Presença - Espaço Gourmet</h2>
+       <p>
+       <form method="post">
+	    <button type="button" class="btn btn-info" id="info">Verifica Ocupação do Espaço Gourmet</button>
+ <!-- Botões comentados 
+        <button type="button" class="btn btn-success" id="success">Presença Detectada</button>
+        <button type="button" class="btn btn-danger" id="danger">Espaço Vazio</button>
+--> 
+     </form>
+      </p>
+      <div id="message"></div>
+</div>
+	
+	
+<div class="row" style='margin-top:20px'>
+	<div class="col-xs-6 col-md-3"  ng-radial-gauge ranges="ranges_t" value="value_ti" value-unit="unit_t" precision="precision_t" lower-limit="lowerLimit_t" upper-limit="upperLimit_t">
+		<div class="chart-title bold"> <strong>     Temperatura do Espaço Gourmet </strong></div>
+	</div>
+	<div class="col-xs-6 col-md-3"  ng-radial-gauge ranges="ranges_t" value="value_te" value-unit="unit_t" precision="precision_t" lower-limit="lowerLimit_t" upper-limit="upperLimit_t">
+		<div class="chart-title bold"> <strong>     Temperatura Externa</strong></div>
+	</div>
+</div>
+
+
+<div class="row" style='margin-top:40px'>
+	<div class="col-xs-6 col-md-3"  ng-radial-gauge ranges="ranges_h" value="value_hi" value-unit="unit_h" precision="precision_h" lower-limit="lowerLimit_h" upper-limit="upperLimit_h">
+		<div class="chart-title bold"> <strong>     Humidade do Espaço Gourmet </strong></div>
+	</div>
+	<div class="col-xs-6 col-md-3"  ng-radial-gauge ranges="ranges_h" value="value_he" value-unit="unit_h" precision="precision_h" lower-limit="lowerLimit_h" upper-limit="upperLimit_h">
+		<div class="chart-title bold"> <strong>     Humidade Externa</strong></div>
+	</div>
+</div>
+

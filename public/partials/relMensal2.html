@@ -1,0 +1,45 @@
+<div ng-controller="tableJsonCtrl3">
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6"> 
+           <button ng-click="exportData()">Export</button>
+		  </div>
+ 
+		<div class="col-xs-6">  <strong> Selecione a quantidade de Registros </strong> 
+				<select ng-model="lmt">
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>						
+		</div>	
+	</div>
+</div>
+
+    <div id="exportable">
+	<table class="table table-bordered table-striped" id="data-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Pole</th>
+                <th>ID do Reservatório</th>
+                <th>Nível</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr ng-repeat="item in items | orderBy: 'datetime':true | limitTo: lmt">
+                <td>{{item.datetime}}</td>
+                <td>{{item.poleid}}</td>
+                <td>{{item.sensorid}}</td>
+                <td ng-if = "item.level4 =='1' && item.level3 =='1' && item.level2 =='1'"><font color="green">Cheio - Nível 4</font></td>
+                <td ng-if = "item.level4 =='0' && item.level3 =='1' && item.level2 =='1'"><font color="green">Cheio - Nível 3</font></td>
+                <td ng-if = "item.level3 =='0' && item.level2 =='1' && item.level1 == '1'"><b>Médio - Nível 2</b></td>
+                <td ng-if = "item.level3 =='0' && item.level2 =='0' && item.level1 =='1'"><font color="red">Baixo - Nível 1</td>
+                <td ng-if = "item.level3 =='0' && item.level2 =='0' && item.level1 =='0'"><font color="red"><b>Crítico</b></td>
+                <td ng-if = "item.level3 =='1' && item.level2 =='1' && item.level1 =='0'"><b>Error</b></td>
+                <td ng-if = "item.level3 =='1' && item.level2 =='0' && item.level1 =='0'"><b>Error</b></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

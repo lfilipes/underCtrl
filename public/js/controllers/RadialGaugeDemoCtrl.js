@@ -1,5 +1,7 @@
 angular.module('App').controller('RadialGaugeDemoCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
-     
+ 
+var presence = 0;
+ 
  queue()
 	  .defer(d3.json, "/api/data1")
 	  .await(renderGourmet);
@@ -14,7 +16,6 @@ function renderGourmet(error,apiData1) {
 	makeGadgets(gourmetData);
 }
 
-var presence = 0;
 
 function makeGadgets(apiData1){
 	
@@ -41,7 +42,8 @@ function makeGadgets(apiData1){
 	var exTemp = timeDim.top(1)[0].tempext;
 	var inHumi = timeDim.top(1)[0].humispace;
 	var exHumi = timeDim.top(1)[0].humiext;
-	pesence = timeDim.top(1)[0].presencecnt;
+	presence = timeDim.top(1)[0].presencecnt;
+	console.log("presence control value:" + presence);
 
 	
 // monta os gauges de temperatura e humidade

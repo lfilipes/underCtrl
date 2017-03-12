@@ -9,8 +9,7 @@ function renderData(error,apiData) {
 	makeGraphs2(sensorData);
 }
 	  
-var minD = new Date();
-var maxD = new Date();
+
 var firstD = new Date();
 
 
@@ -40,8 +39,6 @@ var firstD = new Date();
 	
 	var minDate = nd;
 	var maxDate = now;
-	console.log("minDate:" + minDate);
-	console.log("maxDate: " + maxDate);	
     queue()
 	  .defer(d3.json, "/api/data")
 	  .await(rD);
@@ -109,12 +106,18 @@ function makeGraphs2(apiData,minDate,maxDate){
 	function reduceRemove(p, v) {return (v.total > 10) ? p - 1 : p;},
 	function reduceInitial() {return 0;}
 	);
-	firstD = timeDim.bottom(1)[0].datetime;
 
-	//Define threshold values for data
-if (minDate == undefined)  {minD = firstD;} else minD = minDate;
-//	maxDate = timeDim.top(1)[0].datetime;	
-if (maxDate == undefined) {maxD = new Date();} else maxD = maxDate;
+
+//Define threshold values for data	
+	firstD = timeDim.bottom(1)[0].datetime;
+	var lastD = timeDim.top(1)[0].datetime;
+	var minD, maxD = new Date();
+	if (minDate == undefined)  {minD = firstD;} else {minD = minDate;};
+	if (maxDate == undefined) {maxD = lastD;} else {maxD = maxDate;};
+
+	console.log("minD:" + minD);
+	console.log("maxD: " + maxD);	
+
 	
 	var dateChart = dc.lineChart("#date-chart2");
 	dateChart
